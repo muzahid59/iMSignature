@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="JVQ-on-ukH">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iMSignature" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eVS-IV-zrU">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="trash" id="Yo3-dZ-Fde">
+                                <connections>
+                                    <action selector="eraseSignature:" destination="BYZ-38-t0r" id="wms-L4-Ndb"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="done" id="pUg-wk-hP2">
+                                <connections>
+                                    <action selector="doneBtnAction:" destination="BYZ-38-t0r" id="6I1-ID-dSd"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="I09-4r-ub1" kind="presentation" identifier="Modal_Preview" id="BKp-7G-pjZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1151" y="336"/>
+        </scene>
+        <!--Preview View Controller-->
+        <scene sceneID="zEb-Pk-6xj">
+            <objects>
+                <viewController id="I09-4r-ub1" customClass="PreviewViewController" customModule="iMSignature" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yI2-fK-YsC"/>
+                        <viewControllerLayoutGuide type="bottom" id="mcl-AP-Eam"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ya4-yD-a1b">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dxw-Br-u0s">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Preview" id="2Ab-0S-QU8">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="HY0-42-fAu">
+                                            <connections>
+                                                <action selector="doneAction:" destination="I09-4r-ub1" id="L9Z-VW-NCj"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jRx-LP-GgW">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="jRx-LP-GgW" secondAttribute="trailing" id="1EL-5E-1aA"/>
+                            <constraint firstAttribute="trailing" secondItem="Dxw-Br-u0s" secondAttribute="trailing" id="HZ0-HK-ZBP"/>
+                            <constraint firstItem="Dxw-Br-u0s" firstAttribute="top" secondItem="ya4-yD-a1b" secondAttribute="top" id="Iqf-Rr-Oi6"/>
+                            <constraint firstItem="Dxw-Br-u0s" firstAttribute="leading" secondItem="ya4-yD-a1b" secondAttribute="leading" id="Jw5-0l-s4u"/>
+                            <constraint firstItem="jRx-LP-GgW" firstAttribute="top" secondItem="Dxw-Br-u0s" secondAttribute="bottom" id="fSa-bQ-r9h"/>
+                            <constraint firstItem="mcl-AP-Eam" firstAttribute="top" secondItem="jRx-LP-GgW" secondAttribute="bottom" id="g5P-RU-wKb"/>
+                            <constraint firstItem="jRx-LP-GgW" firstAttribute="leading" secondItem="ya4-yD-a1b" secondAttribute="leading" id="hWM-wi-OUj"/>
+                            <constraint firstItem="jRx-LP-GgW" firstAttribute="top" secondItem="Dxw-Br-u0s" secondAttribute="bottom" id="k6h-E9-NSE"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="previewImage" destination="jRx-LP-GgW" id="izX-tl-3Y3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A6i-EC-1Nb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1801" y="336"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qbe-nj-I7I">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JVQ-on-ukH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hw4-s1-6te">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="6d8-17-PFX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="clm-6d-Msa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="419" y="344"/>
+        </scene>
+    </scenes>
+</document>

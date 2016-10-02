@@ -19,15 +19,15 @@ class ViewController: UIViewController {
 	
 		self.signature = iMSignature(frame: self.view.bounds)
 		//self.signature?.setLineWidth(5)
-		self.signature?.setStrokeColor(UIColor.blueColor())
+		self.signature?.setStrokeColor(UIColor.blue)
 		
 		self.view.addSubview(self.signature!)
 	}
-	@IBAction func eraseSignature(sender: AnyObject) {
+	@IBAction func eraseSignature(_ sender: AnyObject) {
 		self.signature?.erase()
 	}
 
-	@IBAction func doneBtnAction(sender: AnyObject) {
+	@IBAction func doneBtnAction(_ sender: AnyObject) {
 		if self.signature?.signatureIsGiven == false {
 			print("isgiven false")
 		}else{
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
 			guard let _ = self.signatureImage else{
 				return
 			}
-			self.performSegueWithIdentifier("Modal_Preview", sender: self)
+			self.performSegue(withIdentifier: "Modal_Preview", sender: self)
 		}
 	}
 	
@@ -44,16 +44,16 @@ class ViewController: UIViewController {
 		let rect = _view.bounds
 		UIGraphicsBeginImageContext(rect.size)
 		let contextRef = UIGraphicsGetCurrentContext()
-		_view.layer.renderInContext(contextRef!)
+		_view.layer.render(in: contextRef!)
 		let img = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()
-		return img
+		return img!
 	}
 	
 	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "Modal_Preview" {
-			let destinationVC = segue.destinationViewController as! PreviewViewController
+			let destinationVC = segue.destination as! PreviewViewController
 			destinationVC.img = self.signatureImage
 		}
 		// Get the new view controller using segue.destinationViewController.

@@ -20,8 +20,8 @@ class PreviewViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-	@IBAction func doneAction(sender: AnyObject) {
-		self.dismissViewControllerAnimated(true, completion: nil)
+	@IBAction func doneAction(_ sender: AnyObject) {
+		self.dismiss(animated: true, completion: nil)
 	}
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

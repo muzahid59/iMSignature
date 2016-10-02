@@ -10,16 +10,16 @@ import UIKit
 
 class iMSignature: UIView {
 	
-	private var path: UIBezierPath!
-	private var strokeColor = UIColor.blackColor() // default signature color
-	private var lineWidth: CGFloat = 2.0 // default signature line width
+	fileprivate var path: UIBezierPath!
+	fileprivate var strokeColor = UIColor.black // default signature color
+	fileprivate var lineWidth: CGFloat = 2.0 // default signature line width
 	
-	private(set) var signatureIsGiven = false
+	fileprivate(set) var signatureIsGiven = false
 		
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.backgroundColor = UIColor.lightGrayColor() // default background color of the container view
+		self.backgroundColor = UIColor.lightGray // default background color of the container view
 		path = UIBezierPath()
 		let panGesture = UIPanGestureRecognizer(target: self, action: #selector(iMSignature.handlePan(_:)))
 		self.addGestureRecognizer(panGesture)
@@ -35,7 +35,7 @@ class iMSignature: UIView {
 	/// - Parameter color: The background color to set
 	/// - Returns: Nothing to return
 	
-	func setBackGroundColor(color: UIColor) -> Void {
+	func setBackGroundColor(_ color: UIColor) -> Void {
 		self.backgroundColor = color
 	}
 	
@@ -43,7 +43,7 @@ class iMSignature: UIView {
 	/// - Parameter color: Color of the Signature
 	/// - Returns: Nothing to return
 	
-	func setStrokeColor(color: UIColor) -> Void {
+	func setStrokeColor(_ color: UIColor) -> Void {
 		self.strokeColor = color
 		
 	}
@@ -52,7 +52,7 @@ class iMSignature: UIView {
 	/// - Parameter width: The line width of the signature
 	/// - Returns: Nothing to return
 	
-	func setLineWidth(width: CGFloat) -> Void {
+	func setLineWidth(_ width: CGFloat) -> Void {
 		self.lineWidth = width
 		self.path.lineWidth = width
 	}
@@ -62,7 +62,7 @@ class iMSignature: UIView {
 	/// - Parameter longPress:  Long press geture recognizer
 	/// - Returns: Nothing to return
 	
-	func longPress(longPress: UILongPressGestureRecognizer) -> Void {
+	func longPress(_ longPress: UILongPressGestureRecognizer) -> Void {
 		self.erase()
 	}
 	
@@ -71,15 +71,15 @@ class iMSignature: UIView {
   /// by pan gesture.
 	/// - Returns: Nothing to return
 	
-	func handlePan(pan: UIPanGestureRecognizer) -> Void {
-		let currentPoint = pan.locationInView(self)
-		if pan.state == .Began {
-			path.moveToPoint(currentPoint)
-		}else if pan.state == .Changed{
+	func handlePan(_ pan: UIPanGestureRecognizer) -> Void {
+		let currentPoint = pan.location(in: self)
+		if pan.state == .began {
+			path.move(to: currentPoint)
+		}else if pan.state == .changed{
 			self.signatureIsGiven = true
-			path.addLineToPoint(currentPoint) // draw signature as the path user move his finger
+			path.addLine(to: currentPoint) // draw signature as the path user move his finger
 		}
-		self.setNeedsDisplay()
+		self.setNeedsDisplay() // force to draw the UIBeizerPath
 	}
 	
 	/// Erase the current signature
@@ -92,7 +92,7 @@ class iMSignature: UIView {
 
 	/// Draw the UIBeizerPath on the container view
 	
-	override func drawRect(rect: CGRect) {
+	override func draw(_ rect: CGRect) {
 		self.path.lineWidth = self.lineWidth
 		self.strokeColor.setStroke()
 		path.stroke()

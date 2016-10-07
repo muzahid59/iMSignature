@@ -12,7 +12,7 @@ class iMSignature: UIView {
 	
 	fileprivate var path: UIBezierPath!
 	fileprivate var strokeColor = UIColor.black // default signature color
-	fileprivate var lineWidth: CGFloat = 2.0 // default signature line width
+	fileprivate var lineWidth: CGFloat = 5.0 // default signature line width
 	
 	fileprivate(set) var signatureIsGiven = false
 		

@@ -12,14 +12,16 @@ Swift 3, Xcode 8, Cocoa Touch, Git
 
 ##How to use
 	
-	  	let signature = iMSignature(frame: self.view.bounds)
+    let signature = iMSignature(frame: self.view.bounds)
 		signature.setStrokeColor(UIColor.blue)
 		self.view.addSubview(signature)
 
 
 ![alt tag](demo.png)
 
-## Contributing
+## Have to do:
+1. Have to add color picker.
+2. Add eraser rather than trash.
 Forks, patches and other feedback are welcome.
 
 ## Creator
